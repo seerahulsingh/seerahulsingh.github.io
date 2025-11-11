@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rahul Singh - Resume</title>
+    <title>Rahul Singh - Full Stack Developer</title>
     <style>
         * {
             margin: 0;
@@ -12,398 +12,581 @@
         }
         
         body {
-            font-family: 'Helvetica', 'Arial', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #e4e4e7;
+            background: #09090b;
+            overflow-x: hidden;
         }
         
-        .page {
-            width: 210mm;
-            min-height: 297mm;
-            margin: 0 auto 20px auto;
-            background: white;
-            display: flex;
-            overflow: hidden;
-            box-sizing: border-box;
+        .background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.3), transparent),
+                        radial-gradient(ellipse 60% 80% at 90% 50%, rgba(236, 72, 153, 0.2), transparent);
+            pointer-events: none;
+            z-index: 0;
         }
         
-        .sidebar {
-            width: 35%;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
-            color: white;
-            padding: 30px 25px;
-            height: 100%;
+        .container {
             position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
         }
         
-        .sidebar::after {
+        nav {
+            padding: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 60px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #a1a1aa;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover {
+            color: #e4e4e7;
+        }
+        
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: #a1a1aa;
+            margin-bottom: 40px;
+        }
+        
+        .hero .description {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+            color: #71717a;
+            line-height: 1.8;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(167, 139, 250, 0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #e4e4e7;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .skill-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .skill-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(167, 139, 250, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .skill-card span {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        
+        .experience-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .experience-timeline::before {
             content: '';
             position: absolute;
+            left: 0;
             top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(71, 85, 105, 0.1) 0%, rgba(51, 65, 85, 0.2) 100%);
-            pointer-events: none;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #a78bfa, #ec4899);
         }
         
-        .main-content {
-            width: 65%;
-            padding: 30px 30px;
-            height: 100%;
-        }
-        
-        .sidebar h2 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #94a3b8;
+        .experience-item {
+            margin-bottom: 50px;
             position: relative;
-            z-index: 1;
-            letter-spacing: 0.5px;
         }
         
-        .contact-item {
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -45px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #a78bfa;
+            border: 3px solid #09090b;
+        }
+        
+        .experience-header {
             margin-bottom: 15px;
-            font-size: 13px;
-            position: relative;
-            z-index: 1;
         }
         
-        .contact-item strong {
-            display: block;
-            margin-bottom: 3px;
-            color: #cbd5e1;
-            font-weight: 600;
-        }
-        
-        .contact-item a {
-            color: #f1f5f9;
-            text-decoration: none;
-            word-break: break-all;
-        }
-        
-        .skills-list {
-            list-style: none;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .skills-list li {
-            padding: 10px 15px;
-            font-size: 14px;
-            margin-bottom: 8px;
-            background: rgba(148, 163, 184, 0.2);
-            border-left: 3px solid #94a3b8;
-            border-radius: 4px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .cert-item {
-            margin-bottom: 20px;
-            font-size: 13px;
-            position: relative;
-            z-index: 1;
-            padding: 12px;
-            background: rgba(148, 163, 184, 0.15);
-            border-radius: 6px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .cert-item h3 {
-            font-size: 14px;
+        .experience-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e4e4e7;
             margin-bottom: 5px;
-            color: #cbd5e1;
-            font-weight: 600;
         }
         
-        .cert-item a {
-            color: #f1f5f9;
-            text-decoration: none;
-            word-break: break-all;
+        .company {
+            color: #a78bfa;
         }
         
-        header h1 {
-            font-size: 32px;
-            color: #2c3e50;
-            margin-bottom: 8px;
+        .experience-date {
+            color: #71717a;
+            font-size: 0.95rem;
+            font-style: italic;
         }
         
-        .summary {
-            margin: 20px 0;
-            font-size: 13px;
-            line-height: 1.6;
+        .experience-description {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
         }
         
-        .summary h2 {
-            font-size: 18px;
-            color: #2c3e50;
-            margin-bottom: 12px;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 6px;
-        }
-        
-        .experience {
-            margin-top: 20px;
-        }
-        
-        .experience h2 {
-            font-size: 18px;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 6px;
-        }
-        
-        .job {
-            margin-bottom: 18px;
-        }
-        
-        .job h3 {
-            font-size: 15px;
-            color: #2c3e50;
-            margin-bottom: 4px;
-        }
-        
-        .job .title {
-            font-weight: bold;
-        }
-        
-        .job .date {
-            color: #7f8c8d;
-            font-size: 12px;
-            margin-bottom: 8px;
-        }
-        
-        .job ul {
+        .experience-description ul {
             margin-left: 20px;
-            margin-top: 6px;
         }
         
-        .job li {
-            margin-bottom: 5px;
-            font-size: 12px;
-            line-height: 1.5;
+        .experience-description li {
+            margin-bottom: 10px;
+            color: #a1a1aa;
+            line-height: 1.7;
         }
         
-        .education {
-            margin-top: 30px;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
         }
         
-        .education h2 {
-            font-size: 20px;
-            color: #2c3e50;
+        .contact-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(167, 139, 250, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .contact-card h3 {
+            color: #a78bfa;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .contact-card a {
+            color: #e4e4e7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-card a:hover {
+            color: #a78bfa;
+        }
+        
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cert-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cert-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(167, 139, 250, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .cert-card h3 {
+            color: #e4e4e7;
             margin-bottom: 15px;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 8px;
+            font-size: 1.2rem;
         }
         
-        .education h3 {
-            font-size: 16px;
-            color: #2c3e50;
-            margin-bottom: 5px;
+        .cert-card a {
+            color: #a78bfa;
+            text-decoration: none;
+            font-size: 0.9rem;
         }
         
-        .education p {
-            color: #7f8c8d;
-            font-size: 13px;
+        .cert-card a:hover {
+            text-decoration: underline;
         }
         
-        @media print {
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color-adjust: exact !important;
+        .education-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+        }
+        
+        .education-card h3 {
+            font-size: 1.8rem;
+            color: #e4e4e7;
+            margin-bottom: 10px;
+        }
+        
+        .education-card p {
+            color: #a1a1aa;
+            font-size: 1.1rem;
+        }
+        
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 80px;
+        }
+        
+        footer p {
+            color: #71717a;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
             }
             
-            @page {
-                size: A4;
-                margin: 0;
+            .hero h1 {
+                font-size: 3rem;
             }
             
-            body {
-                margin: 0;
-                padding: 0;
+            .hero .subtitle {
+                font-size: 1.2rem;
             }
             
-            .page {
-                width: 210mm;
-                height: 297mm;
-                min-height: 297mm;
-                max-height: 297mm;
-                margin: 0;
-                padding: 0;
-                page-break-after: always;
-                page-break-inside: avoid;
-                overflow: hidden;
-                box-sizing: border-box;
+            .nav-links {
+                gap: 15px;
+                font-size: 0.85rem;
             }
             
-            .page:last-child {
-                page-break-after: auto;
+            .section-title {
+                font-size: 2rem;
             }
             
-            .sidebar {
-                background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%) !important;
+            .experience-timeline {
+                padding-left: 30px;
             }
             
-            .sidebar::after {
-                background: linear-gradient(180deg, rgba(71, 85, 105, 0.1) 0%, rgba(51, 65, 85, 0.2) 100%) !important;
-            }
-            
-            .skills-list li {
-                background: rgba(148, 163, 184, 0.2) !important;
-                border-left: 3px solid #94a3b8 !important;
-            }
-            
-            .cert-item {
-                background: rgba(148, 163, 184, 0.15) !important;
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Page 1 -->
-    <div class="page">
-        <div class="sidebar">
-            <section class="contact">
-                <h2>Contact</h2>
-                <div class="contact-item">
-                    <strong>Location</strong>
-                    Noida, Uttar Pradesh, India
-                </div>
-                <div class="contact-item">
-                    <strong>Email</strong>
-                    <a href="mailto:singhrahulnow@gmail.com">singhrahulnow@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <strong>Phone</strong>
-                    7897284772
-                </div>
-                <div class="contact-item">
-                    <strong>LinkedIn</strong>
-                    <a href="https://linkedin.com/in/seerahulsingh">linkedin.com/in/seerahulsingh</a>
-                </div>
-            </section>
-            
-            <section class="skills" style="margin-top: 35px;">
-                <h2>Skills</h2>
-                <ul class="skills-list">
-                    <li>Ruby on Rails</li>
-                    <li>React.js</li>
-                    <li>Typescript</li>
-                    <li>Graphql</li>
-                    <li>Next.js</li>
-                    <li>Node.js</li>
-                    <li>Salesforce</li>
-                </ul>
-            </section>
-            
-            <section class="certifications" style="margin-top: 35px;">
-                <h2>Udemy Certifications</h2>
-                <div class="cert-item">
-                    <h3>Basics of GraphQL with Ruby on Rails</h3>
-                    <a href="https://ude.my/UC-a7816f37-dc86-4cc1-892d-7edac3ccdec9">ude.my/UC-a7816f37</a>
-                </div>
-                <div class="cert-item">
-                    <h3>Understanding TypeScript</h3>
-                    <a href="https://ude.my/UC-3ca4653c-86ba-4654-accc-50118e7946f8">ude.my/UC-3ca4653c</a>
-                </div>
-            </section>
-        </div>
-        
-        <div class="main-content">
-            <header>
-                <h1>Rahul Singh</h1>
-            </header>
-            
-            <section class="summary">
-                <h2>Summary</h2>
-                <p>Full Stack Developer with 12 years of experience specializing in Ruby on Rails, Reactjs, and Typescript. I've built scalable web applications in fast-paced startup environments, owning projects from concept to deployment.</p>
-                <p style="margin-top: 10px;">Passionate about solving complex problems, writing clean, efficient code, and committed to improving code clarity, quality, performance, and long-term maintainability.</p>
-            </section>
-            
-            <section class="experience">
-                <h2>Experience</h2>
-                
-                <div class="job">
-                    <h3><span class="title">EquityMultiple</span> — Senior Backend Developer</h3>
-                    <p class="date">Jan 2024 - Present</p>
-                    <ul>
-                        <li>Lead backend initiatives across Rails services, improving performance, reliability, and internal tooling.</li>
-                        <li>Worked on architectural improvements, database optimizations, and refactoring legacy components.</li>
-                        <li>Supported platform scalability, API enhancements, and internal developer productivity efforts.</li>
-                    </ul>
-                </div>
-                
-                <div class="job">
-                    <h3><span class="title">EquityMultiple</span> — Senior Full Stack Developer</h3>
-                    <p class="date">Jun 2021 - Dec 2023</p>
-                    <ul>
-                        <li>Built and maintained full stack features using Ruby on Rails, React, and TypeScript.</li>
-                        <li>Delivered product improvements in onboarding, transactions, analytics, and internal operations tools.</li>
-                        <li>Collaborated closely with product, design, and data teams to implement user-focused solutions.</li>
-                    </ul>
-                </div>
-                
-                <div class="job">
-                    <h3><span class="title">EquityMultiple</span> — Salesforce Developer</h3>
-                    <p class="date">Jun 2018 - May 2021</p>
-                    <ul>
-                        <li>Implemented Salesforce automation, integrations, and workflow enhancements supporting investment operations.</li>
-                        <li>Built scalable Apex services and integrated Salesforce with internal Rails applications and external services.</li>
-                    </ul>
-                </div>
-                
-                <div class="job">
-                    <h3><span class="title">Icicle Technologies</span> — Senior Software Developer</h3>
-                    <p class="date">Oct 2017 - Jun 2018</p>
-                    <ul>
-                        <li>Worked for Portland-based startup Renew Financial, providing no-money-down home improvement financing solutions.</li>
-                        <li>Improved architectural stability, upgraded Rails versions, and built POCs for ETL and Salesforce integrations.</li>
-                        <li>Consolidated 15 microservices into pluggable Rails engines, reducing infrastructure costs and simplifying local development.</li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-    </div>
+    <div class="background-gradient"></div>
     
-    <!-- Page 2 -->
-    <div class="page">
-        <div class="sidebar">
-            <!-- Empty sidebar for page 2 with same background color -->
-        </div>
+    <div class="container">
+        <nav>
+            <div class="logo">RS</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
         
-        <div class="main-content">
-            <section class="experience" style="margin-top: 0;">
-                <div class="job">
-                    <h3><span class="title">Akaruilabs India</span> — Product Manager</h3>
-                    <p class="date">May 2017 - Oct 2017</p>
-                    <ul>
-                        <li>Expanded the team by hiring and training two new developers.</li>
-                        <li>Redesigned the frontend architecture using React, Redux, and Rails API.</li>
-                        <li>Integrated React, Redux-Form, and React Router across the application.</li>
-                        <li>Delivered revamped features improving usability and performance.</li>
-                    </ul>
+        <section class="hero" id="about">
+            <h1>Rahul Singh</h1>
+            <p class="subtitle">Full Stack Developer</p>
+            <p class="description">
+                12 years crafting scalable web applications with Ruby on Rails, Salesforce, and modern JavaScript frameworks. 
+                I turn complex problems into elegant solutions, from concept to deployment.
+            </p>
+        </section>
+        
+        <section class="section" id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <span>Ruby on Rails</span>
+                </div>
+                <div class="skill-card">
+                    <span>React.js</span>
+                </div>
+                <div class="skill-card">
+                    <span>TypeScript</span>
+                </div>
+                <div class="skill-card">
+                    <span>GraphQL</span>
+                </div>
+                <div class="skill-card">
+                    <span>Next.js</span>
+                </div>
+                <div class="skill-card">
+                    <span>Node.js</span>
+                </div>
+                <div class="skill-card">
+                    <span>Salesforce</span>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section" id="experience">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title"><span class="company">EquityMultiple</span> — Senior Backend Developer</h3>
+                        <p class="experience-date">Jan 2024 - Present</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Lead backend initiatives across Rails services, improving performance, reliability, and internal tooling.</li>
+                            <li>Worked on architectural improvements, database optimizations, and refactoring legacy components.</li>
+                            <li>Supported platform scalability, API enhancements, and internal developer productivity efforts.</li>
+                        </ul>
+                    </div>
                 </div>
                 
-                <div class="job">
-                    <h3><span class="title">Akaruilabs India</span> — Software Engineer</h3>
-                    <p class="date">Jun 2013 - Apr 2017</p>
-                    <ul>
-                        <li>Led client calls, gathered requirements, and delivered full-stack features.</li>
-                        <li>Took ownership from development to deployment and code reviews.</li>
-                        <li>Built strong foundation in startup-style development environments.</li>
-                    </ul>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title"><span class="company">EquityMultiple</span> — Senior Full Stack Developer</h3>
+                        <p class="experience-date">Jun 2021 - Dec 2023</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Built and maintained full stack features using Ruby on Rails, React, and TypeScript.</li>
+                            <li>Delivered product improvements in onboarding, transactions, analytics, and internal operations tools.</li>
+                            <li>Collaborated closely with product, design, and data teams to implement user-focused solutions.</li>
+                        </ul>
+                    </div>
                 </div>
-            </section>
-            
-            <section class="education">
-                <h2>Education</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title"><span class="company">EquityMultiple</span> — Salesforce Developer</h3>
+                        <p class="experience-date">Jun 2018 - May 2021</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Implemented Salesforce automation, integrations, and workflow enhancements supporting investment operations.</li>
+                            <li>Built scalable Apex services and integrated Salesforce with internal Rails applications and external services.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title"><span class="company">Icicle Technologies</span> — Senior Software Developer</h3>
+                        <p class="experience-date">Oct 2017 - Jun 2018</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Worked for Portland-based startup Renew Financial, providing no-money-down home improvement financing solutions.</li>
+                            <li>Improved architectural stability, upgraded Rails versions, and built POCs for ETL and Salesforce integrations.</li>
+                            <li>Consolidated 15 microservices into pluggable Rails engines, reducing infrastructure costs and simplifying local development.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title"><span class="company">Akaruilabs India</span> — Product Manager</h3>
+                        <p class="experience-date">May 2017 - Oct 2017</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Expanded the team by hiring and training two new developers.</li>
+                            <li>Redesigned the frontend architecture using React, Redux, and Rails API.</li>
+                            <li>Integrated React, Redux-Form, and React Router across the application.</li>
+                            <li>Delivered revamped features improving usability and performance.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3 class="experience-title"><span class="company">Akaruilabs India</span> — Software Engineer</h3>
+                        <p class="experience-date">Jun 2013 - Apr 2017</p>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Led client calls, gathered requirements, and delivered full-stack features.</li>
+                            <li>Took ownership from development to deployment and code reviews.</li>
+                            <li>Built strong foundation in startup-style development environments.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <h3>Basics of GraphQL with Ruby on Rails</h3>
+                    <a href="https://ude.my/UC-a7816f37-dc86-4cc1-892d-7edac3ccdec9" target="_blank">View Certificate →</a>
+                </div>
+                <div class="cert-card">
+                    <h3>Understanding TypeScript</h3>
+                    <a href="https://ude.my/UC-3ca4653c-86ba-4654-accc-50118e7946f8" target="_blank">View Certificate →</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-card">
                 <h3>B.Tech — Computer Software Engineering</h3>
                 <p>Integral University, Lucknow (2009-2013)</p>
-            </section>
-        </div>
+            </div>
+        </section>
+        
+        <section class="section" id="contact">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Location</h3>
+                    <p>Noida, Uttar Pradesh, India</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Email</h3>
+                    <a href="mailto:singhrahulnow@gmail.com">singhrahulnow@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <h3>Phone</h3>
+                    <p>7897284772</p>
+                </div>
+                <div class="contact-card">
+                    <h3>LinkedIn</h3>
+                    <a href="https://linkedin.com/in/seerahulsingh" target="_blank">seerahulsingh</a>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>© 2025 Rahul Singh. All rights reserved.</p>
+        </footer>
     </div>
 </body>
 </html>
