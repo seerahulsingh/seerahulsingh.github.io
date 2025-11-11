@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul Singh - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 20px auto;
+            background: white;
+            display: flex;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        
+        .sidebar {
+            width: 35%;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            color: white;
+            padding: 30px 25px;
+            height: 100%;
+            position: relative;
+        }
+        
+        .sidebar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(71, 85, 105, 0.1) 0%, rgba(51, 65, 85, 0.2) 100%);
+            pointer-events: none;
+        }
+        
+        .main-content {
+            width: 65%;
+            padding: 30px 30px;
+            height: 100%;
+        }
+        
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #94a3b8;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.5px;
+        }
+        
+        .contact-item {
+            margin-bottom: 15px;
+            font-size: 13px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-item strong {
+            display: block;
+            margin-bottom: 3px;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+        
+        .contact-item a {
+            color: #f1f5f9;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        
+        .skills-list {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .skills-list li {
+            padding: 10px 15px;
+            font-size: 14px;
+            margin-bottom: 8px;
+            background: rgba(148, 163, 184, 0.2);
+            border-left: 3px solid #94a3b8;
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cert-item {
+            margin-bottom: 20px;
+            font-size: 13px;
+            position: relative;
+            z-index: 1;
+            padding: 12px;
+            background: rgba(148, 163, 184, 0.15);
+            border-radius: 6px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cert-item h3 {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+        
+        .cert-item a {
+            color: #f1f5f9;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        
+        header h1 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .summary {
+            margin: 20px 0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        
+        .summary h2 {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 6px;
+        }
+        
+        .experience {
+            margin-top: 20px;
+        }
+        
+        .experience h2 {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 6px;
+        }
+        
+        .job {
+            margin-bottom: 18px;
+        }
+        
+        .job h3 {
+            font-size: 15px;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+        
+        .job .title {
+            font-weight: bold;
+        }
+        
+        .job .date {
+            color: #7f8c8d;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .job ul {
+            margin-left: 20px;
+            margin-top: 6px;
+        }
+        
+        .job li {
+            margin-bottom: 5px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        
+        .education {
+            margin-top: 30px;
+        }
+        
+        .education h2 {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+        }
+        
+        .education h3 {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .education p {
+            color: #7f8c8d;
+            font-size: 13px;
+        }
+        
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .page {
+                width: 210mm;
+                height: 297mm;
+                min-height: 297mm;
+                max-height: 297mm;
+                margin: 0;
+                padding: 0;
+                page-break-after: always;
+                page-break-inside: avoid;
+                overflow: hidden;
+                box-sizing: border-box;
+            }
+            
+            .page:last-child {
+                page-break-after: auto;
+            }
+            
+            .sidebar {
+                background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%) !important;
+            }
+            
+            .sidebar::after {
+                background: linear-gradient(180deg, rgba(71, 85, 105, 0.1) 0%, rgba(51, 65, 85, 0.2) 100%) !important;
+            }
+            
+            .skills-list li {
+                background: rgba(148, 163, 184, 0.2) !important;
+                border-left: 3px solid #94a3b8 !important;
+            }
+            
+            .cert-item {
+                background: rgba(148, 163, 184, 0.15) !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1 -->
+    <div class="page">
+        <div class="sidebar">
+            <section class="contact">
+                <h2>Contact</h2>
+                <div class="contact-item">
+                    <strong>Location</strong>
+                    Noida, Uttar Pradesh, India
+                </div>
+                <div class="contact-item">
+                    <strong>Email</strong>
+                    <a href="mailto:singhrahulnow@gmail.com">singhrahulnow@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Phone</strong>
+                    7897284772
+                </div>
+                <div class="contact-item">
+                    <strong>LinkedIn</strong>
+                    <a href="https://linkedin.com/in/seerahulsingh">linkedin.com/in/seerahulsingh</a>
+                </div>
+            </section>
+            
+            <section class="skills" style="margin-top: 35px;">
+                <h2>Skills</h2>
+                <ul class="skills-list">
+                    <li>Ruby on Rails</li>
+                    <li>React.js</li>
+                    <li>Typescript</li>
+                    <li>Graphql</li>
+                    <li>Next.js</li>
+                    <li>Node.js</li>
+                    <li>Salesforce</li>
+                </ul>
+            </section>
+            
+            <section class="certifications" style="margin-top: 35px;">
+                <h2>Udemy Certifications</h2>
+                <div class="cert-item">
+                    <h3>Basics of GraphQL with Ruby on Rails</h3>
+                    <a href="https://ude.my/UC-a7816f37-dc86-4cc1-892d-7edac3ccdec9">ude.my/UC-a7816f37</a>
+                </div>
+                <div class="cert-item">
+                    <h3>Understanding TypeScript</h3>
+                    <a href="https://ude.my/UC-3ca4653c-86ba-4654-accc-50118e7946f8">ude.my/UC-3ca4653c</a>
+                </div>
+            </section>
+        </div>
+        
+        <div class="main-content">
+            <header>
+                <h1>Rahul Singh</h1>
+            </header>
+            
+            <section class="summary">
+                <h2>Summary</h2>
+                <p>Full Stack Developer with 12 years of experience specializing in Ruby on Rails, Salesforce, and modern JavaScript frameworks. I've built scalable web applications in fast-paced startup environments, owning projects from concept to deployment.</p>
+                <p style="margin-top: 10px;">Passionate about solving complex problems, writing clean, efficient code, and committed to improving code clarity, quality, performance, and long-term maintainability.</p>
+            </section>
+            
+            <section class="experience">
+                <h2>Experience</h2>
+                
+                <div class="job">
+                    <h3><span class="title">EquityMultiple</span> — Senior Backend Developer</h3>
+                    <p class="date">Jan 2024 - Present</p>
+                    <ul>
+                        <li>Lead backend initiatives across Rails services, improving performance, reliability, and internal tooling.</li>
+                        <li>Worked on architectural improvements, database optimizations, and refactoring legacy components.</li>
+                        <li>Supported platform scalability, API enhancements, and internal developer productivity efforts.</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <h3><span class="title">EquityMultiple</span> — Senior Full Stack Developer</h3>
+                    <p class="date">Jun 2021 - Dec 2023</p>
+                    <ul>
+                        <li>Built and maintained full stack features using Ruby on Rails, React, and TypeScript.</li>
+                        <li>Delivered product improvements in onboarding, transactions, analytics, and internal operations tools.</li>
+                        <li>Collaborated closely with product, design, and data teams to implement user-focused solutions.</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <h3><span class="title">EquityMultiple</span> — Salesforce Developer</h3>
+                    <p class="date">Jun 2018 - May 2021</p>
+                    <ul>
+                        <li>Implemented Salesforce automation, integrations, and workflow enhancements supporting investment operations.</li>
+                        <li>Built scalable Apex services and integrated Salesforce with internal Rails applications and external services.</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <h3><span class="title">Icicle Technologies</span> — Senior Software Developer</h3>
+                    <p class="date">Oct 2017 - Jun 2018</p>
+                    <ul>
+                        <li>Worked for Portland-based startup Renew Financial, providing no-money-down home improvement financing solutions.</li>
+                        <li>Improved architectural stability, upgraded Rails versions, and built POCs for ETL and Salesforce integrations.</li>
+                        <li>Consolidated 15 microservices into pluggable Rails engines, reducing infrastructure costs and simplifying local development.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <!-- Page 2 -->
+    <div class="page">
+        <div class="sidebar">
+            <!-- Empty sidebar for page 2 with same background color -->
+        </div>
+        
+        <div class="main-content">
+            <section class="experience" style="margin-top: 0;">
+                <div class="job">
+                    <h3><span class="title">Akaruilabs India</span> — Product Manager</h3>
+                    <p class="date">May 2017 - Oct 2017</p>
+                    <ul>
+                        <li>Expanded the team by hiring and training two new developers.</li>
+                        <li>Redesigned the frontend architecture using React, Redux, and Rails API.</li>
+                        <li>Integrated React, Redux-Form, and React Router across the application.</li>
+                        <li>Delivered revamped features improving usability and performance.</li>
+                    </ul>
+                </div>
+                
+                <div class="job">
+                    <h3><span class="title">Akaruilabs India</span> — Software Engineer</h3>
+                    <p class="date">Jun 2013 - Apr 2017</p>
+                    <ul>
+                        <li>Led client calls, gathered requirements, and delivered full-stack features.</li>
+                        <li>Took ownership from development to deployment and code reviews.</li>
+                        <li>Built strong foundation in startup-style development environments.</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="education">
+                <h2>Education</h2>
+                <h3>B.Tech — Computer Software Engineering</h3>
+                <p>Integral University, Lucknow (2009-2013)</p>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
